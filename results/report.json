@@ -1,0 +1,241 @@
+{
+  "total_cases": 20,
+  "correct": 9,
+  "accuracy": 0.45,
+  "by_type": {
+    "classification": {
+      "accuracy": 0.8,
+      "correct": 8,
+      "total": 10
+    },
+    "extraction": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 5
+    },
+    "summarization": {
+      "accuracy": 0.2,
+      "correct": 1,
+      "total": 5
+    }
+  },
+  "details": [
+    {
+      "id": 1,
+      "type": "classification",
+      "expected": "positive",
+      "prediction": "neutral",
+      "correct": false
+    },
+    {
+      "id": 2,
+      "type": "classification",
+      "expected": "negative",
+      "prediction": "negative",
+      "correct": true
+    },
+    {
+      "id": 3,
+      "type": "classification",
+      "expected": "neutral",
+      "prediction": "neutral",
+      "correct": true
+    },
+    {
+      "id": 4,
+      "type": "classification",
+      "expected": "negative",
+      "prediction": "neutral",
+      "correct": false
+    },
+    {
+      "id": 5,
+      "type": "classification",
+      "expected": "positive",
+      "prediction": "positive",
+      "correct": true
+    },
+    {
+      "id": 6,
+      "type": "classification",
+      "expected": "neutral",
+      "prediction": "neutral",
+      "correct": true
+    },
+    {
+      "id": 7,
+      "type": "classification",
+      "expected": "positive",
+      "prediction": "positive",
+      "correct": true
+    },
+    {
+      "id": 8,
+      "type": "classification",
+      "expected": "negative",
+      "prediction": "negative",
+      "correct": true
+    },
+    {
+      "id": 9,
+      "type": "classification",
+      "expected": "positive",
+      "prediction": "positive",
+      "correct": true
+    },
+    {
+      "id": 10,
+      "type": "classification",
+      "expected": "neutral",
+      "prediction": "neutral",
+      "correct": true
+    },
+    {
+      "id": 11,
+      "type": "extraction",
+      "expected": {
+        "name": "Иван Петров",
+        "email": "ivan@example.com",
+        "phone": "+7-999-123-45-67"
+      },
+      "prediction": {
+        "name": null,
+        "email": null,
+        "phone": null,
+        "inn": null,
+        "address": null
+      },
+      "correct": false
+    },
+    {
+      "id": 12,
+      "type": "extraction",
+      "expected": {
+        "name": "Мария Сидорова",
+        "email": "maria@test.ru",
+        "phone": null
+      },
+      "prediction": {
+        "name": null,
+        "email": null,
+        "phone": null,
+        "inn": null,
+        "address": null
+      },
+      "correct": false
+    },
+    {
+      "id": 13,
+      "type": "extraction",
+      "expected": {
+        "name": "ООО Ромашка",
+        "inn": "1234567890"
+      },
+      "prediction": {
+        "name": null,
+        "email": null,
+        "phone": null,
+        "inn": null,
+        "address": null
+      },
+      "correct": false
+    },
+    {
+      "id": 14,
+      "type": "extraction",
+      "expected": {
+        "name": "Алексей",
+        "phone": "8-800-555-35-35"
+      },
+      "prediction": {
+        "name": null,
+        "email": null,
+        "phone": null,
+        "inn": null,
+        "address": null
+      },
+      "correct": false
+    },
+    {
+      "id": 15,
+      "type": "extraction",
+      "expected": {
+        "name": "Вектор",
+        "address": "г. Москва, ул. Ленина, д. 10"
+      },
+      "prediction": {
+        "name": null,
+        "email": null,
+        "phone": null,
+        "inn": null,
+        "address": null
+      },
+      "correct": false
+    },
+    {
+      "id": 16,
+      "type": "summarization",
+      "expected_keywords": [
+        "новый продукт",
+        "быстро",
+        "недорого",
+        "довольны"
+      ],
+      "prediction": "Компания X выпустила",
+      "keywords_found": 0,
+      "correct": false
+    },
+    {
+      "id": 17,
+      "type": "summarization",
+      "expected_keywords": [
+        "курс доллара",
+        "вырос",
+        "санкции",
+        "прогнозы"
+      ],
+      "prediction": "Курс доллара вырос",
+      "keywords_found": 2,
+      "correct": true
+    },
+    {
+      "id": 18,
+      "type": "summarization",
+      "expected_keywords": [
+        "закон",
+        "1 января",
+        "малый бизнес",
+        "штрафы"
+      ],
+      "prediction": "Новый закон вступит",
+      "keywords_found": 1,
+      "correct": false
+    },
+    {
+      "id": 19,
+      "type": "summarization",
+      "expected_keywords": [
+        "новый вид",
+        "рыбы",
+        "глубина",
+        "Nature"
+      ],
+      "prediction": "Учёные обнаружили новый",
+      "keywords_found": 0,
+      "correct": false
+    },
+    {
+      "id": 20,
+      "type": "summarization",
+      "expected_keywords": [
+        "выиграла",
+        "3:1",
+        "тренер",
+        "доволен"
+      ],
+      "prediction": "Команда выиграла матч",
+      "keywords_found": 1,
+      "correct": false
+    }
+  ]
+}
