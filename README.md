@@ -56,3 +56,39 @@ nano data/test_cases.json
   {"id": 19, "type": "summarization", "input": "Учёные обнаружили новый вид рыб. Он обитает на глубине 2 км. Исследование опубликовано в Nature.", "expected_keywords": ["новый вид", "рыбы", "глубина", "Nature"]},
   {"id": 20, "type": "summarization", "input": "Команда выиграла матч со счётом 3:1. Тренер доволен игрой. Следующий матч через неделю.", "expected_keywords": ["выиграла", "3:1", "тренер", "доволен"]}
 ]
+
+## Оценка
+
+Скрипт `src/ai_judge_eval.py` добавляет два новых метода оценки:
+
+| Метрика | Значение |
+|---|---|
+| Exact Match Accuracy | 45.00% |
+| AI-Judge Average Score | 0.4583 |
+| Pairwise consistency (no position bias) | 8/20 (40%) |
+
+**Интерпретация:** AI-судья даёт более мягкую оценку (0.4583 против 0.45 точного совпадения), потому что засчитывает частичные совпадения. Позиционное предубеждение обнаружено: в 60% случаев вердикт меняется при перестановке A и B.
+
+## Ограничения
+
+- AI-судья в `ai_judge_eval.py` — эвристический (пересечение токенов), а не LLM. В демо-режиме без API.
+- Позиционное предубеждение: судья зависит от порядка ответов (40% консистентности).
+- `demo_model` — заглушка: classification по ключевым словам, extraction возвращает `None`, summarization — первые 3 слова. Exact Match 45% отражает слабость заглушки, а не качество LLM.
+- Для production нужно: заменить судью на реальный LLM с промптом из `prompts.py`, добавить калибровку оценок, проверять консистентность на большем наборе, логировать вердикты судьи.
+
+## Архитектура
+
+```mermaid
+flowchart LR
+    D[data/test_cases.json] --> M[demo_model]
+    M --> P[Prediction]
+    P --> E[Exact Match]
+    P --> J[AI-судья: overlap_score]
+    J --> S[AI-Judge Average Score]
+    P --> W[Pairwise A/B]
+    W --> W2[Pairwise B/A]
+    W2 --> C[Consistency check]
+    E --> R[results/report.json]
+    S --> J2[results/judge_report.json]
+    C --> J2
+```
