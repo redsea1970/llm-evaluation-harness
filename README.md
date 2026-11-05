@@ -92,3 +92,7 @@ flowchart LR
     S --> J2[results/judge_report.json]
     C --> J2
 ```
+
+## Архитектура
+
+Подробная схема проекта: [ARCHITECTURE.md](ARCHITECTURE.md)
